@@ -2,26 +2,24 @@ package scripts;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.WebFormPage;
 import support.utils.DateUtil;
+import support.utils.DriverUtil;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Month;
 
+import static support.constants.UrlEnum.SELENIUM_WEB_FORM_PAGE;
+
 public class CalendarTest {
 
-	WebDriver driver;
-	WebFormPage calendarPage;
+	private WebDriver driver;
+
+	private WebFormPage calendarPage;
 
 	@BeforeEach
 	public void setup() {
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-
-		driver.get("https://www.selenium.dev/selenium/web/web-form.html");
-
+		driver = DriverUtil.setupChromeDriverWithWaiting(SELENIUM_WEB_FORM_PAGE.getUrl());
 		calendarPage = new WebFormPage(driver);
 	}
 
@@ -75,7 +73,7 @@ public class CalendarTest {
 	@Test
 	@DisplayName("Pick a past date in the calendar.")
 	public void pickAPastDateInTheCalendar() {
-		LocalDate date = LocalDate.of(1990, Month.MARCH, 8);
+		LocalDate date = LocalDate.of(2000, Month.MARCH, 8);
 		String expectedDate = DateUtil.convertDateToStringFormatNumbersMonthDayYear(date);
 
 		calendarPage.pickADateInCalendar(date);
