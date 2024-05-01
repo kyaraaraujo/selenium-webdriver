@@ -11,12 +11,18 @@ import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
+/*
+Elements in this page:
+    - date picker (input and calendar),
+    - radio button
+*/
+
 public class WebFormPage extends BasePage {
 
     private final WebFormPageCalendarElements calendarElement = new WebFormPageCalendarElements(navegador);
 
-    private WebElement dayElement;
-
+    @FindBy(id = "my-radio-2")
+    private WebElement radioButton;
 
     public WebFormPage(WebDriver navegador) {
         super(navegador);
@@ -64,5 +70,12 @@ public class WebFormPage extends BasePage {
         calendarElement.dayElement.click();
     }
 
+    public boolean isRadioButtonSelected(){
+        return radioButton.isSelected();
+    }
+
+    public void enableRadioButton(){
+        radioButton.click();
+    }
 
 }
