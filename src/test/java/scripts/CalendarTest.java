@@ -57,7 +57,6 @@ public class CalendarTest {
 		Assertions.assertEquals(invalidDate, actualDate);
 	}
 
-
 	@Test
 	@DisplayName("Pick a future date in the calendar.")
 	public void pickAFutureDateInTheCalendar() {
@@ -83,7 +82,7 @@ public class CalendarTest {
 	}
 
 	@AfterEach
-	public void teardown() {
+	public void tearDown() {
 		driver.quit();
 	}
 
