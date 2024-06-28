@@ -41,8 +41,8 @@ public class WebFormPage extends BasePage {
     @FindBy(id = "my-radio-2")
     private WebElement radioButton;
 
-    public WebFormPage(WebDriver browser) {
-        super(browser);
+    public WebFormPage(WebDriver driver) {
+        super(driver);
     }
 
     public void inputADateWithVisibleCalendar(String date) {
@@ -100,12 +100,12 @@ public class WebFormPage extends BasePage {
 
     private void setMonthElement(String month) {
         String xpath = "//div[@class='datepicker-months']//span[@class='month'][text()='" + month + "']";
-        this.monthElement = browser.findElement(By.xpath(xpath));
+        this.monthElement = driver.findElement(By.xpath(xpath));
     }
 
     private void setDayElement(String day) {
         String xpath = "//div[@class='datepicker-days']/table[@class='table-condensed']/tbody//td[@class='day'][text()='" + day + "']";
-        this.dayElement = browser.findElement(By.xpath(xpath));
+        this.dayElement = driver.findElement(By.xpath(xpath));
     }
 
     public boolean isRadioButtonSelected(){
