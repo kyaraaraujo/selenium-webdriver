@@ -21,7 +21,7 @@ public class AlertTest {
 
     @Test
     @DisplayName("Check the text in the alert.")
-    public void checkAlertText() throws InterruptedException {
+    public void checkAlertText() {
         Alert alert = alertsPage.openAlert();
         Assertions.assertEquals("cheese", alert.getText());
     }
@@ -30,8 +30,7 @@ public class AlertTest {
     @DisplayName("Check the alert doesn't have a text.")
     public void checkAlertWithoutText() {
         Alert alert = alertsPage.openEmptyAlert();
-        String alertText = alert.getText();
-        Assertions.assertEquals("", alertText);
+        Assertions.assertEquals("", alert.getText());
     }
 
     @Test
